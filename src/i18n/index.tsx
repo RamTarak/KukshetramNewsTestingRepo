@@ -51,7 +51,7 @@ i18n
     interpolation: {
       escapeValue: false,
     },
-    debug: process.env.NODE_ENV === "development",
+    debug: import.meta.env.DEV,
   });
 
 // Always update document direction when language changes

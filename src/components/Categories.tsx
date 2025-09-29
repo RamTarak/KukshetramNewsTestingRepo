@@ -86,7 +86,7 @@ const CategoryBubble = ({ category }: { category: Category }) => {
         const firstNews = res.data.result.items[0];
         navigate(`/news/${firstNews.id}`);
       } else {
-        alert("No news available for this category.");
+        alert(t("news.noNewsAvailable"));
       }
     } catch (err) {
       console.error("Error fetching news for category:", err);
@@ -127,7 +127,7 @@ const CategoryBubble = ({ category }: { category: Category }) => {
 
       <div className="text-center">
         <h3 className="text-sm sm:text-base md:text-lg font-bold text-gray-900 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
-          {loading ? "Loading..." : category.category_name}
+          {loading ? t("common.loading") : category.category_name}
         </h3>
       </div>
     </div>
@@ -274,7 +274,7 @@ const Categories = () => {
           </h2>
           <p className="text-gray-600 dark:text-gray-400 mb-4">
             {t("categories.selectLanguageFirst") ||
-              "Please select a language first to view categories."}
+              t("categories.selectLanguageFirst")}
           </p>
         </div>
       </section>

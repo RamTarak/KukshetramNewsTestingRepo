@@ -45,7 +45,16 @@
     "login": "لاگ ان",
     "daysAgo": "{{count}} دن پہلے",
     "unknownAuthor": "نامعلوم مصنف",
-    "and": "اور"
+    "and": "اور",
+    "language": "زبان",
+    "date": "تاریخ",
+    "retry": "دوبارہ کوشش کریں",
+    "ok": "ٹھیک ہے",
+    "cancel": "منسوخ کریں",
+    "copy": "کاپی کریں",
+    "showUrl": "URL دکھائیں",
+    "openDirect": "براہ راست کھولیں",
+    "clickToChange": "انتخاب تبدیل کرنے کے لیے کلک کریں"
   },
   "navigation": {
     "home": "ہوم",
@@ -56,13 +65,20 @@
   "time": {
     "daysAgo": "{{count}} دن پہلے",
     "minutesAgo": "{{count}} منٹ پہلے",
+    "hoursAgo": "{{count}} گھنٹے پہلے",
+    "monthsAgo": "{{count}} مہینے پہلے",
+    "yearsAgo": "{{count}} سال پہلے",
     "minutesAgo_plural": "{{count}} منٹ پہلے",
-    "hoursAgo": "{{count}} گھنٹہ پہلے",
     "hoursAgo_plural": "{{count}} گھنٹے پہلے",
+    "daysAgo_plural": "{{count}} دن پہلے",
+    "monthsAgo_plural": "{{count}} مہینے پہلے",
+    "yearsAgo_plural": "{{count}} سال پہلے",
     "justNow": "ابھی",
     "minutesAgo_other": "{{count}} منٹ پہلے",
     "hoursAgo_other": "{{count}} گھنٹے پہلے",
-    "daysAgo_other": "{{count}} دن پہلے"
+    "daysAgo_other": "{{count}} دن پہلے",
+    "monthsAgo_other": "{{count}} مہینے پہلے",
+    "yearsAgo_other": "{{count}} سال پہلے"
   },
   "news": {
     "rrVsKcr": "RR بمقابلہ KCR جھڑپ",
@@ -272,7 +288,9 @@
     "passwordResetSuccess": "پاس ورڈ کامیابی سے ری سیٹ ہو گیا! لاگ ان پر ری ڈائریکٹ ہو رہے ہیں...",
     "passwordResetFailed": "پاس ورڈ ری سیٹ کرنے میں ناکام۔ براہ کرم دوبارہ کوشش کریں۔",
     "resetting": "ری سیٹ ہو رہا ہے...",
-    "resetPassword": "پاس ورڈ ری سیٹ کریں"
+    "resetPassword": "پاس ورڈ ری سیٹ کریں",
+    "invalidCredentials": "غلط ای میل/فون یا پاس ورڈ",
+    "userNotFound": "صارف نہیں ملا"
   },
   "politicsNews": {
     "heading": "تازہ سیاسی خبریں",
@@ -354,7 +372,8 @@
     "newsLoadErrorTitle": "خبریں لوڈ کرنے میں خرابی",
     "noNewsData": "کوئی خبری ڈیٹا دستیاب نہیں ہے",
     "connectionIssue": "سرور سے کنکشن کا مسئلہ - براہ کرم بعد میں دوبارہ کوشش کریں",
-    "newsLoadError": "خبریں لوڈ کرنے میں مسئلہ:"
+    "newsLoadError": "خبریں لوڈ کرنے میں مسئلہ:",
+    "serverError": "سرور کی خرابی۔ براہ کرم بعد میں دوبارہ کوشش کریں۔"
   },
   "headings": {
     "politicsLatestNews": "تازہ ترین سیاسی خبریں",

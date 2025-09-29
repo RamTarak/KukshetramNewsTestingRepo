@@ -85,21 +85,7 @@ const getLanguageDirection = (lang: string) => {
 };
 
 
-// Helper function to format time ago with i18n support
-const getTimeAgo = (date: Date, t: any): string => {
-  const now = new Date().getTime();
-  const diff = Math.max(0, now - date.getTime());
-  const min = Math.floor(diff / (60 * 1000));
-
-  if (min < 1) return t("time.justNow");
-  if (min < 60) return t("time.minutesAgo", { count: min });
-
-  const hrs = Math.floor(min / 60);
-  if (hrs < 24) return t("time.hoursAgo", { count: hrs });
-
-  const days = Math.floor(hrs / 24);
-  return t("time.daysAgo", { count: days });
-};
+import { formatTimeAgo } from '@/utils/timeUtils';
 
 // Default location constants (fallbacks only)
 const DEFAULT_LANGUAGE_NAME = "English";
@@ -304,7 +290,7 @@ const Header = () => {
         
         // Show success toast
         toast({
-          title: "Profile Updated",
+          title: t("profile.profileUpdated"),
           description: `Welcome, ${userData.firstName}!`,
           variant: "default",
         });
@@ -1781,7 +1767,7 @@ const Header = () => {
                                         {news.publishedAt && (
                                           <div className="flex items-center gap-1">
                                             <Clock className="h-3 w-3" />
-                                            <span>{getTimeAgo(new Date(news.publishedAt), t)}</span>
+                                            <span>{formatTimeAgo(news.publishedAt, { t })}</span>
                                           </div>
                                         )}
                                       </div>
@@ -2346,61 +2332,187 @@ const Header = () => {
                         </DialogHeader>
                         
                         <div className="space-y-6 py-2">
-                          {/* Information We Collect */}
+                          {/* Introduction */}
                           <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl p-6 border border-blue-100 dark:border-blue-800">
-                            <div className="flex items-start mb-4">
-                              <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
-                                <span className="text-white font-bold text-sm">1</span>
-                              </div>
-                              <div>
-                                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{t("profile.informationWeCollect")}</h4>
-                                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                                  {t("profile.privacyInfo1")}
-                                </p>
-                              </div>
+                            <div className="text-center mb-4">
+                              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Marokurukshetram News Privacy Policy</h3>
+                              <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
+                                Please read this Privacy Policy very carefully. It contains important information about Your rights and obligations. This Privacy Policy sets out the manner in which Marokurukshetram News Private Limited ("Marokurukshetram News", "We", "Us", "Our") collects, uses, maintains, and discloses information collected from the users of our mobile application (hereinafter referred to as "You", "Your", "User").
+                              </p>
+                              <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-sm mt-2">
+                                By downloading, installing, or using the Marokurukshetram News App (hereinafter referred to as "App"), You consent to the use of Your personal information as outlined in this Privacy Policy.
+                              </p>
                             </div>
                           </div>
-                          
-                          {/* How We Use Info */}
+
+                          {/* Information Collected */}
                           <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl p-6 border border-green-100 dark:border-green-800">
                             <div className="flex items-start mb-4">
                               <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
-                                <span className="text-white font-bold text-sm">2</span>
+                                <span className="text-white font-bold text-sm">1</span>
                               </div>
                               <div>
-                                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{t("profile.howWeUseInfo")}</h4>
-                                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                                  {t("profile.privacyInfo2")}
-                                </p>
+                                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Information Collected from the User</h4>
+                                
+                                <div className="space-y-4">
+                                  <div>
+                                    <h5 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">1.1 Technological Data</h5>
+                                    <ul className="text-gray-700 dark:text-gray-300 text-sm space-y-1 ml-4">
+                                      <li>• IP Address</li>
+                                      <li>• Location (only with Your permission)</li>
+                                      <li>• Device Camera</li>
+                                      <li>• Device Storage</li>
+                                      <li>• Device Information and interaction activity with the App</li>
+                                    </ul>
+                                    <p className="text-gray-700 dark:text-gray-300 text-sm mt-2">
+                                      The App requires access to device storage to save offline news, images, and videos. Location access helps us serve localized news. The camera may be used for features like Citizen Journalism submissions.
+                                    </p>
+                                  </div>
+
+                                  <div>
+                                    <h5 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">1.2 Personally Identifiable Information (PII) & Non-PII</h5>
+                                    <p className="text-gray-700 dark:text-gray-300 text-sm mb-2">We may collect:</p>
+                                    <ul className="text-gray-700 dark:text-gray-300 text-sm space-y-1 ml-4">
+                                      <li>• Email ID</li>
+                                      <li>• Mobile Number</li>
+                                      <li>• Advertiser ID</li>
+                                    </ul>
+                                    <p className="text-gray-700 dark:text-gray-300 text-sm mt-2">
+                                      These are collected only in specific circumstances: Comments Section, Citizen Journalism, and Advertising purposes. All PII and non-PII data is securely routed through our private domains: https://v1.marokurukshetram.com and https://v2.marokurukshetram.com
+                                    </p>
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
-                          
-                          {/* Data Protection */}
+
+                          {/* Use of Information */}
                           <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl p-6 border border-purple-100 dark:border-purple-800">
                             <div className="flex items-start mb-4">
                               <div className="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                                <span className="text-white font-bold text-sm">2</span>
+                              </div>
+                              <div>
+                                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Use of Collected Information</h4>
+                                <p className="text-gray-700 dark:text-gray-300 text-sm mb-2">Your information may be used to:</p>
+                                <ul className="text-gray-700 dark:text-gray-300 text-sm space-y-1 ml-4">
+                                  <li>• Enable login and authenticate Your access</li>
+                                  <li>• Personalize Your news and app experience</li>
+                                  <li>• Send important updates, administrative emails, and policy changes</li>
+                                  <li>• Respond to inquiries, feedback, or support requests</li>
+                                  <li>• Send promotional updates (with an option to unsubscribe)</li>
+                                  <li>• Prevent fraudulent activity or violations of our Terms & Conditions</li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Data Protection */}
+                          <div className="bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 rounded-xl p-6 border border-orange-100 dark:border-orange-800">
+                            <div className="flex items-start mb-4">
+                              <div className="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
                                 <span className="text-white font-bold text-sm">3</span>
                               </div>
                               <div>
-                                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{t("profile.dataProtection")}</h4>
-                                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                                  {t("profile.privacyInfo3")}
+                                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Data Protection</h4>
+                                <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                                  We adopt appropriate technical and organizational measures to safeguard Your information against unauthorized access, alteration, or disclosure. Data is encrypted and securely stored in our databases. However, no system is 100% secure. Users are encouraged to safeguard their devices and login credentials.
                                 </p>
                               </div>
                             </div>
                           </div>
-                          
-                          {/* Contact Us */}
-                          <div className="bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 rounded-xl p-6 border border-orange-100 dark:border-orange-800">
+
+                          {/* Sharing Information */}
+                          <div className="bg-gradient-to-r from-teal-50 to-cyan-50 dark:from-teal-900/20 dark:to-cyan-900/20 rounded-xl p-6 border border-teal-100 dark:border-teal-800">
                             <div className="flex items-start mb-4">
-                              <div className="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                              <div className="w-8 h-8 bg-teal-500 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                                <span className="text-white font-bold text-sm">4</span>
+                              </div>
+                              <div>
+                                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Sharing of Personal Information</h4>
+                                <ul className="text-gray-700 dark:text-gray-300 text-sm space-y-1 ml-4">
+                                  <li>• We do not sell or trade Your information</li>
+                                  <li>• Aggregated demographic information (non-identifiable) may be shared with trusted affiliates, advertisers, or partners</li>
+                                  <li>• Information may be disclosed if required by law, national security, or legal processes</li>
+                                  <li>• In case of merger, acquisition, or sale of assets, user information may be transferred to the new entity</li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* User Choices */}
+                          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-900/20 dark:to-blue-900/20 rounded-xl p-6 border border-indigo-100 dark:border-indigo-800">
+                            <div className="flex items-start mb-4">
+                              <div className="w-8 h-8 bg-indigo-500 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                                <span className="text-white font-bold text-sm">5</span>
+                              </div>
+                              <div>
+                                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">User Choices</h4>
+                                <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                                  You may opt-out of promotional emails at any time by following the unsubscribe instructions provided in the email. You may still receive essential communications (account, security, or legal updates).
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Advertisements */}
+                          <div className="bg-gradient-to-r from-pink-50 to-rose-50 dark:from-pink-900/20 dark:to-rose-900/20 rounded-xl p-6 border border-pink-100 dark:border-pink-800">
+                            <div className="flex items-start mb-4">
+                              <div className="w-8 h-8 bg-pink-500 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                                <span className="text-white font-bold text-sm">6</span>
+                              </div>
+                              <div>
+                                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">User Privacy & Advertisements</h4>
+                                <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                                  The App displays advertisements sourced from multiple networks. Some ads may be personalized. Users are advised to verify authenticity of products/services before making purchases. We disclaim responsibility for issues arising from third-party advertisements, websites, or apps accessed through the App.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Policy Changes */}
+                          <div className="bg-gradient-to-r from-yellow-50 to-amber-50 dark:from-yellow-900/20 dark:to-amber-900/20 rounded-xl p-6 border border-yellow-100 dark:border-yellow-800">
+                            <div className="flex items-start mb-4">
+                              <div className="w-8 h-8 bg-yellow-500 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                                <span className="text-white font-bold text-sm">7</span>
+                              </div>
+                              <div>
+                                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Changes to this Policy</h4>
+                                <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                                  Marokurukshetram News may revise this Privacy Policy from time to time. The updated version will always be available at: https://marokurukshetram.com/privacy_policy.html. Continued use of the App after updates implies Your acceptance of the revised policy.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Acceptance */}
+                          <div className="bg-gradient-to-r from-gray-50 to-slate-50 dark:from-gray-900/20 dark:to-slate-900/20 rounded-xl p-6 border border-gray-100 dark:border-gray-800">
+                            <div className="flex items-start mb-4">
+                              <div className="w-8 h-8 bg-gray-500 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                                <span className="text-white font-bold text-sm">8</span>
+                              </div>
+                              <div>
+                                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Acceptance of Policy</h4>
+                                <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                                  By using this App, You confirm Your acceptance of this Privacy Policy. If You do not agree, please discontinue using the App.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Contact Us */}
+                          <div className="bg-gradient-to-r from-emerald-50 to-green-50 dark:from-emerald-900/20 dark:to-green-900/20 rounded-xl p-6 border border-emerald-100 dark:border-emerald-800">
+                            <div className="flex items-start mb-4">
+                              <div className="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
                                 <MessageSquare className="w-4 h-4 text-white" />
                               </div>
                               <div>
-                                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{t("profile.contactUs")}</h4>
-                                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                                  {t("profile.privacyContact")}
+                                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Contact Us</h4>
+                                <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                                  For any queries regarding this Privacy Policy or App practices, please contact:
+                                </p>
+                                <p className="text-gray-700 dark:text-gray-300 text-sm mt-2 font-medium">
+                                  © Marokurukshetram News Private Limited.
                                 </p>
                               </div>
                             </div>

@@ -53,7 +53,8 @@
     "cancel": "Cancel",
     "copy": "Copy",
     "showUrl": "Show URL",
-    "openDirect": "Open Direct"
+    "openDirect": "Open Direct",
+    "clickToChange": "Click to change selection"
   },
   "navigation": {
     "home": "Home",
@@ -269,7 +270,9 @@
     "passwordResetSuccess": "Password reset successfully! Redirecting to login...",
     "passwordResetFailed": "Failed to reset password. Please try again.",
     "resetting": "Resetting...",
-    "resetPassword": "Reset Password"
+    "resetPassword": "Reset Password",
+    "invalidCredentials": "Invalid email/phone or password",
+    "userNotFound": "User not found"
   },
   "politicsNews": {
     "heading": "Latest Political News",
@@ -340,7 +343,9 @@
     "title": "News Categories",
     "subtitle": "Get the latest news and updates from various fields",
     "loading": "Loading categories...",
-    "error": "Error loading categories"
+    "error": "Error loading categories",
+    "selectLanguageFirst": "Please select a language first",
+    "noCategories": "No categories available"
   },
   "newspaper": {
     "selectLanguage": "Select Language",
@@ -372,7 +377,8 @@
     "newsLoadErrorTitle": "Error loading news",
     "noNewsData": "No news data available",
     "connectionIssue": "Connection issue with server - please try again later",
-    "newsLoadError": "Problem loading news:"
+    "newsLoadError": "Problem loading news:",
+    "serverError": "Server error. Please try again later."
   },
   "headings": {
     "politicsLatestNews": "Latest Political News",
@@ -391,13 +397,19 @@
     "minutesAgo": "{{count}} minutes ago",
     "hoursAgo": "{{count}} hours ago",
     "daysAgo": "{{count}} days ago",
+    "monthsAgo": "{{count}} months ago",
+    "yearsAgo": "{{count}} years ago",
     "minutesAgo_plural": "{{count}} minutes ago",
     "hoursAgo_plural": "{{count}} hours ago",
     "daysAgo_plural": "{{count}} days ago",
+    "monthsAgo_plural": "{{count}} months ago",
+    "yearsAgo_plural": "{{count}} years ago",
     "justNow": "just now",
     "minutesAgo_other": "{{count}}m ago",
     "hoursAgo_other": "{{count}}h ago",
-    "daysAgo_other": "{{count}}d ago"
+    "daysAgo_other": "{{count}}d ago",
+    "monthsAgo_other": "{{count}}mo ago",
+    "yearsAgo_other": "{{count}}y ago"
   },
     "newspaper": {
       "title": "Maro Kurukshetram",

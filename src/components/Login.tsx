@@ -20,6 +20,16 @@ interface User {
   lastName: string;
   email: string;
   phone: string;
+  token?: string;
+}
+
+interface LoginResponse {
+  status: number;
+  message: string;
+  token?: string;
+  user?: User;
+  result?: User;
+  data?: User;
 }
 
 const Login = ({ onSuccess, onSwitchToSignup, onError, onClearError }: LoginProps) => {
@@ -40,6 +50,16 @@ const Login = ({ onSuccess, onSwitchToSignup, onError, onClearError }: LoginProp
       onError(t("auth.fillAllFields") || "Please fill all fields");
       return false;
     }
+    
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^[0-9]{10}$/;
+    
+    if (!emailRegex.test(formData.emailOrPhone) && !phoneRegex.test(formData.emailOrPhone)) {
+      onError(t("auth.invalidEmail") || "Please enter a valid email or 10-digit phone number");
+      return false;
+    }
+    
     return true;
   };
 
@@ -57,30 +77,37 @@ const Login = ({ onSuccess, onSwitchToSignup, onError, onClearError }: LoginProp
         password: formData.password,
       };
 
-      const res = await apiClient.post("/auth/userLogin", payload);
+      const res = await apiClient.post<LoginResponse>("/auth/userLogin", payload);
       console.log("Login API response:", res.data);
       
       // Handle different response structures
-      let userData;
-      if (res.data.user) {
-        userData = res.data.user;
-      } else if (res.data.result) {
-        userData = res.data.result;
-      } else if (res.data.data) {
-        userData = res.data.data;
+      let userData: User;
+      const responseData = res.data;
+      
+      if (responseData.user) {
+        userData = responseData.user;
+      } else if (responseData.result) {
+        userData = responseData.result;
+      } else if (responseData.data) {
+        userData = responseData.data;
       } else {
-        userData = res.data;
+        userData = responseData as unknown as User;
       }
       
       console.log("Extracted user data:", userData);
 
       // Store token if available
-      if (res.data.token) {
-        localStorage.setItem("token", res.data.token);
-        console.log("Token stored:", res.data.token);
+      if (responseData.token) {
+        localStorage.setItem("token", responseData.token);
+        console.log("Token stored:", responseData.token);
       } else if (userData.token) {
         localStorage.setItem("token", userData.token);
         console.log("Token stored from userData:", userData.token);
+      }
+
+      // Validate that we have required user data
+      if (!userData.id || !userData.firstName || !userData.email) {
+        throw new Error("Invalid user data received from server");
       }
 
       // Store user data in localStorage
@@ -93,18 +120,25 @@ const Login = ({ onSuccess, onSwitchToSignup, onError, onClearError }: LoginProp
     } catch (err: any) {
       console.error("Login error:", err);
       
-      let errorMessage = "Login failed. Please try again.";
+      let errorMessage = t("auth.loginFailed");
       
-      if (err?.response?.data?.message) {
+      // Handle different types of errors
+      if (err?.response?.status === 401) {
+        errorMessage = t("auth.invalidCredentials") || "Invalid email/phone or password";
+      } else if (err?.response?.status === 404) {
+        errorMessage = t("auth.userNotFound") || "User not found";
+      } else if (err?.response?.status === 500) {
+        errorMessage = t("errors.serverError");
+      } else if (err?.response?.data?.message) {
         errorMessage = err.response.data.message;
       } else if (err?.message) {
         errorMessage = err.message;
       } else if (err?.type === 'NETWORK_ERROR') {
-        errorMessage = "Network error. Please check your internet connection.";
+        errorMessage = t("errors.connectionIssue");
       } else if (err?.type === 'SERVER_ERROR') {
-        errorMessage = "Server error. Please try again later.";
+        errorMessage = t("errors.serverError");
       } else if (err?.type === 'CORS_ERROR') {
-        errorMessage = "Connection error. Please refresh the page and try again.";
+        errorMessage = t("errors.connectionIssue");
       }
       
       onError(errorMessage);
@@ -140,7 +174,8 @@ const Login = ({ onSuccess, onSwitchToSignup, onError, onClearError }: LoginProp
   const handleResetPasswordSuccess = () => {
     setCurrentStep('login');
     setForgotPasswordData({ email: '', code: '' });
-    onError('Password reset successfully! Please login with your new password.');
+    // Show success message instead of error
+    onError(t("auth.passwordResetSuccess") || "Password reset successfully! Please login with your new password.");
   };
 
   const handleBackToLogin = () => {

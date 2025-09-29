@@ -23,6 +23,7 @@ import { Comment, CommentResponse, CommentRequest } from "../api/apiTypes";
 import RelatedNews from "../components/RelatedNews";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { formatTimeAgo } from "@/utils/timeUtils";
 
 interface SingleNewsData {
     id: string;
@@ -59,17 +60,6 @@ interface SingleNewsData {
     readTime: number | null;
 }
 
-const timeAgo = (date: Date): string => {
-    const now = Date.now();
-    const diff = Math.max(0, now - date.getTime());
-    const min = Math.floor(diff / (60 * 1000));
-    if (min < 1) return "just now";
-    if (min < 60) return `${min}m ago`;
-    const hrs = Math.floor(min / 60);
-    if (hrs < 24) return `${hrs}h ago`;
-    const days = Math.floor(hrs / 24);
-    return `${days}d ago`;
-};
 
 // Convert YouTube URL into embeddable URL
 const getYouTubeEmbedUrl = (url: string): string | null => {
@@ -684,18 +674,6 @@ const NewsPage = () => {
         }
     };
 
-    // Utility function to format time ago
-    const timeAgo = (date: Date): string => {
-        const now = new Date();
-        const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
-        
-        if (diffInSeconds < 60) return 'Just now';
-        if (diffInSeconds < 3600) return `${Math.floor(diffInSeconds / 60)}m ago`;
-        if (diffInSeconds < 86400) return `${Math.floor(diffInSeconds / 3600)}h ago`;
-        if (diffInSeconds < 2592000) return `${Math.floor(diffInSeconds / 86400)}d ago`;
-        if (diffInSeconds < 31536000) return `${Math.floor(diffInSeconds / 2592000)}mo ago`;
-        return `${Math.floor(diffInSeconds / 31536000)}y ago`;
-    };
 
     // Function to extract username from comment object
     const getUsername = (comment: any) => {
@@ -1293,7 +1271,7 @@ const NewsPage = () => {
                             <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-6">
                                 <div className="flex items-center gap-1">
                                     <Clock className="h-4 w-4" />
-                                    <span>{timeAgo(new Date(newsData.publishedAt || newsData.createdAt))}</span>
+                                    <span>{formatTimeAgo(newsData.publishedAt || newsData.createdAt)}</span>
                                 </div>
                                 <span className="hidden sm:inline text-gray-300 dark:text-gray-600">•</span>
                                 <div className="flex items-center gap-1">
@@ -1552,7 +1530,7 @@ const NewsPage = () => {
                                                             {getUsername(comment)}
                                                         </span>
                                                         <span className="text-xs text-gray-500 dark:text-gray-400">
-                                                            {timeAgo(new Date(comment.createdAt || comment.created_at))}
+                                                            {formatTimeAgo(comment.createdAt || comment.created_at)}
                                                         </span>
                                                         {comment.isEdited && (
                                                             <span className="text-xs text-gray-400 dark:text-gray-500">
@@ -1607,7 +1585,7 @@ const NewsPage = () => {
                                                                                 {getUsername(reply)}
                                                                             </span>
                                                                             <span className="text-xs text-gray-500 dark:text-gray-400">
-                                                                                {timeAgo(new Date(reply.createdAt || reply.created_at))}
+                                                                                {formatTimeAgo(reply.createdAt || reply.created_at)}
                                                                             </span>
                                                                             {reply.isEdited && (
                                                                                 <span className="text-xs text-gray-400 dark:text-gray-500">

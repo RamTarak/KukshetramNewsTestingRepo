@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import apiClient from '@/api/apiClient';
+import { formatTimeAgo } from "@/utils/timeUtils";
 
 interface NewsItem {
   id: string;
@@ -168,21 +169,6 @@ const PoliticsNews: React.FC = () => {
     };
   }, [i18n]);
 
-  const formatTimeAgo = (dateString: string) => {
-    const now = new Date().getTime();
-    const createdAt = new Date(dateString).getTime();
-    const diffInHours = Math.floor((now - createdAt) / (1000 * 60 * 60));
-
-    if (diffInHours < 1) {
-      const diffInMinutes = Math.floor((now - createdAt) / (1000 * 60));
-      return t('time.minutesAgo', { count: diffInMinutes });
-    } else if (diffInHours < 24) {
-      return t('time.hoursAgo', { count: diffInHours });
-    } else {
-      const diffInDays = Math.floor(diffInHours / 24);
-      return t('time.daysAgo', { count: diffInDays });
-    }
-  };
 
   const handleCardClick = (newsId: string) => {
     navigate(`/news/${newsId}`);
@@ -262,7 +248,7 @@ const PoliticsNews: React.FC = () => {
             const summary = news.shortNewsContent || news.excerpt || t('labels.noDetails');
             const category = news.categoryName || t('labels.defaultCategory');
             const author = news.authorName || t('labels.unknownAuthor');
-            const timeAgo = formatTimeAgo(news.createdAt);
+            const timeAgo = formatTimeAgo(news.createdAt, { t });
 
             return (
               <Card

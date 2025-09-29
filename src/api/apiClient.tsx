@@ -3,11 +3,8 @@ import { API_BASE_URL } from "@/config/api";
 
 // Determine the base URL based on environment
 const getBaseURL = () => {
-  // In development, use the proxy
-  if (import.meta.env.DEV) {
-    return "/api";
-  }
-  // In production (Vercel), use the proxy as well since we have API routes
+  // Always use the proxy in both development and production
+  // Vercel will handle the API routes through our serverless functions
   return "/api";
 };
 

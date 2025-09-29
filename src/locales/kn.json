@@ -45,7 +45,16 @@
     "login": "ಲಾಗಿನ್",
     "daysAgo": "{{count}} ದಿನಗಳ ಹಿಂದೆ",
     "unknownAuthor": "ಅಪರಿಚಿತ ಲೇಖಕ",
-    "and": "ಮತ್ತು"
+    "and": "ಮತ್ತು",
+    "language": "ಭಾಷೆ",
+    "date": "ದಿನಾಂಕ",
+    "retry": "ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ",
+    "ok": "ಸರಿ",
+    "cancel": "ರದ್ದುಗೊಳಿಸಿ",
+    "copy": "ನಕಲಿಸಿ",
+    "showUrl": "URL ತೋರಿಸಿ",
+    "openDirect": "ನೇರವಾಗಿ ತೆರೆಯಿರಿ",
+    "clickToChange": "ಆಯ್ಕೆಯನ್ನು ಬದಲಾಯಿಸಲು ಕ್ಲಿಕ್ ಮಾಡಿ"
   },
   "navigation": {
     "home": "ಮುಖಪುಟ",
@@ -56,13 +65,20 @@
   "time": {
     "daysAgo": "{{count}} ದಿನಗಳ ಹಿಂದೆ",
     "minutesAgo": "{{count}} ನಿಮಿಷದ ಹಿಂದೆ",
+    "hoursAgo": "{{count}} ಗಂಟೆಗಳ ಹಿಂದೆ",
+    "monthsAgo": "{{count}} ತಿಂಗಳುಗಳ ಹಿಂದೆ",
+    "yearsAgo": "{{count}} ವರ್ಷಗಳ ಹಿಂದೆ",
     "minutesAgo_plural": "{{count}} ನಿಮಿಷಗಳ ಹಿಂದೆ",
-    "hoursAgo": "{{count}} ಗಂಟೆ ಹಿಂದೆ",
     "hoursAgo_plural": "{{count}} ಗಂಟೆಗಳ ಹಿಂದೆ",
+    "daysAgo_plural": "{{count}} ದಿನಗಳ ಹಿಂದೆ",
+    "monthsAgo_plural": "{{count}} ತಿಂಗಳುಗಳ ಹಿಂದೆ",
+    "yearsAgo_plural": "{{count}} ವರ್ಷಗಳ ಹಿಂದೆ",
     "justNow": "ಈಗ",
     "minutesAgo_other": "{{count}} ನಿಮಿಷಗಳ ಹಿಂದೆ",
     "hoursAgo_other": "{{count}} ಗಂಟೆಗಳ ಹಿಂದೆ",
-    "daysAgo_other": "{{count}} ದಿನಗಳ ಹಿಂದೆ"
+    "daysAgo_other": "{{count}} ದಿನಗಳ ಹಿಂದೆ",
+    "monthsAgo_other": "{{count}} ತಿಂಗಳುಗಳ ಹಿಂದೆ",
+    "yearsAgo_other": "{{count}} ವರ್ಷಗಳ ಹಿಂದೆ"
   },
   "news": {
     "rrVsKcr": "RR ವಿರುದ್ಧ KCR ಘರ್ಷಣೆ",
@@ -272,7 +288,9 @@
     "passwordResetSuccess": "ಪಾಸ್‌ವರ್ಡ್ ಯಶಸ್ವಿಯಾಗಿ ಮರುಹೊಂದಿಸಲಾಗಿದೆ! ಲಾಗಿನ್‌ಗೆ ಮರುನಿರ್ದೇಶಿಸಲಾಗುತ್ತಿದೆ...",
     "passwordResetFailed": "ಪಾಸ್‌ವರ್ಡ್ ಮರುಹೊಂದಿಸಲು ವಿಫಲವಾಗಿದೆ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
     "resetting": "ಮರುಹೊಂದಿಸಲಾಗುತ್ತಿದೆ...",
-    "resetPassword": "ಪಾಸ್‌ವರ್ಡ್ ಮರುಹೊಂದಿಸಿ"
+    "resetPassword": "ಪಾಸ್‌ವರ್ಡ್ ಮರುಹೊಂದಿಸಿ",
+    "invalidCredentials": "ಅಮಾನ್ಯ ಇಮೇಲ್/ಫೋನ್ ಅಥವಾ ಪಾಸ್‌ವರ್ಡ್",
+    "userNotFound": "ಬಳಕೆದಾರ ಕಂಡುಬಂದಿಲ್ಲ"
   },
   "politicsNews": {
     "heading": "ಇತ್ತೀಚಿನ ರಾಜಕೀಯ ಸುದ್ದಿ",
@@ -354,7 +372,8 @@
     "newsLoadErrorTitle": "ಸುದ್ದಿ ಲೋಡ್ ಮಾಡುವಲ್ಲಿ ದೋಷ",
     "noNewsData": "ಯಾವುದೇ ಸುದ್ದಿ ಡೇಟಾ ಲಭ್ಯವಿಲ್ಲ",
     "connectionIssue": "ಸರ್ವರ್‌ಗೆ ಸಂಪರ್ಕ ಸಮಸ್ಯೆ - ದಯವಿಟ್ಟು ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ",
-    "newsLoadError": "ಸುದ್ದಿ ಲೋಡ್ ಮಾಡುವಲ್ಲಿ ಸಮಸ್ಯೆ:"
+    "newsLoadError": "ಸುದ್ದಿ ಲೋಡ್ ಮಾಡುವಲ್ಲಿ ಸಮಸ್ಯೆ:",
+    "serverError": "ಸರ್ವರ್ ದೋಷ. ದಯವಿಟ್ಟು ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
   },
   "headings": {
     "politicsLatestNews": "ಇತ್ತೀಚಿನ ರಾಜಕೀಯ ಸುದ್ದಿ",

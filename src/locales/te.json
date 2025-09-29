@@ -47,8 +47,13 @@
     "and": "మరియు",
     "language": "భాష",
     "date": "తేదీ",
-    "addedBy": "జోడించినది",
-    "copyUrl": "URL కాపీ చేయండి"
+    "retry": "మళ్లీ ప్రయత్నించండి",
+    "ok": "సరే",
+    "cancel": "రద్దు చేయండి",
+    "copy": "కాపీ చేయండి",
+    "showUrl": "URL చూపించండి",
+    "openDirect": "నేరుగా తెరవండి",
+    "clickToChange": "ఎంపిక మార్చడానికి క్లిక్ చేయండి"
   },
   "navigation": {
     "home": "హోమ్",
@@ -264,7 +269,9 @@
     "passwordResetSuccess": "పాస్‌వర్డ్ విజయవంతంగా రీసెట్ చేయబడింది! లాగిన్‌కు మళ్లీ దారి మళ్లిస్తోంది...",
     "passwordResetFailed": "పాస్‌వర్డ్‌ను రీసెట్ చేయడంలో విఫలమైంది. దయచేసి మళ్లీ ప్రయత్నించండి.",
     "resetting": "రీసెట్ చేస్తోంది...",
-    "resetPassword": "పాస్‌వర్డ్‌ను రీసెట్ చేయండి"
+    "resetPassword": "పాస్‌వర్డ్‌ను రీసెట్ చేయండి",
+    "invalidCredentials": "చెల్లని ఇమెయిల్/ఫోన్ లేదా పాస్‌వర్డ్",
+    "userNotFound": "వినియోగదారు కనబడలేదు"
   },
   "politicsNews": {
     "heading": "తాజా రాజకీయ వార్తలు",
@@ -335,7 +342,9 @@
     "title": "న్యూస్ కేటగిరీస్",
     "subtitle": "వివిధ రంగాలకు సంబంధించిన తాజా వార్తలు మరియు అప్‌డేట్‌లను పొందండి",
     "loading": "కేటగిరీలు లోడ్ అవుతున్నాయి...",
-    "error": "కేటగిరీలు లోడ్ చేయడంలో లోపం"
+    "error": "కేటగిరీలు లోడ్ చేయడంలో లోపం",
+    "selectLanguageFirst": "దయచేసి మొదట భాషను ఎంచుకోండి",
+    "noCategories": "కేటగిరీలు అందుబాటులో లేవు"
   },
   "loading": {
     "newsLoading": "వార్తలు లోడ్ చేస్తున్నాం..."
@@ -344,7 +353,8 @@
     "newsLoadErrorTitle": "వార్తలు లోడ్ చేయడంలో సమస్య",
     "noNewsData": "వార్తల డేటా అందుబాటులో లేదు",
     "connectionIssue": "సర్వర్‌తో కనెక్షన్ సమస్య - దయచేసి తరువాత ప్రయత్నించండి",
-    "newsLoadError": "వార్తలు లోడ్ చేయడంలో సమస్య:"
+    "newsLoadError": "వార్తలు లోడ్ చేయడంలో సమస్య:",
+    "serverError": "సర్వర్ లోపం. దయచేసి తరువాత ప్రయత్నించండి."
   },
   "headings": {
     "politicsLatestNews": "రాజకీయ తాజా వార్తలు",
@@ -362,13 +372,20 @@
   "time": {
     "daysAgo": "{{count}} రోజులు క్రితం",
     "minutesAgo": "{{count}} నిమిషం క్రితం",
+    "hoursAgo": "{{count}} గంటల క్రితం",
+    "monthsAgo": "{{count}} నెలల క్రితం",
+    "yearsAgo": "{{count}} సంవత్సరాల క్రితం",
     "minutesAgo_plural": "{{count}} నిమిషాల క్రితం",
-    "hoursAgo": "{{count}} గంట క్రితం",
     "hoursAgo_plural": "{{count}} గంటల క్రితం",
+    "daysAgo_plural": "{{count}} రోజుల క్రితం",
+    "monthsAgo_plural": "{{count}} నెలల క్రితం",
+    "yearsAgo_plural": "{{count}} సంవత్సరాల క్రితం",
     "justNow": "ఇప్పుడే",
     "minutesAgo_other": "{{count}} నిమిషాల క్రితం",
     "hoursAgo_other": "{{count}} గంటల క్రితం",
-    "daysAgo_other": "{{count}} రోజుల క్రితం"
+    "daysAgo_other": "{{count}} రోజుల క్రితం",
+    "monthsAgo_other": "{{count}} నెలల క్రితం",
+    "yearsAgo_other": "{{count}} సంవత్సరాల క్రితం"
   },
     "newspaper": {
       "title": "మరో కురుక్షేత్రం న్యూస్",

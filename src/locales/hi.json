@@ -45,7 +45,16 @@
     "login": "लॉगिन",
     "daysAgo": "{{count}} दिन पहले",
     "unknownAuthor": "अज्ञात लेखक",
-    "and": "और"
+    "and": "और",
+    "language": "भाषा",
+    "date": "तारीख",
+    "retry": "पुनः प्रयास",
+    "ok": "ठीक है",
+    "cancel": "रद्द करें",
+    "copy": "कॉपी करें",
+    "showUrl": "URL दिखाएं",
+    "openDirect": "सीधे खोलें",
+    "clickToChange": "चयन बदलने के लिए क्लिक करें"
   },
   "navigation": {
     "home": "होम",
@@ -56,13 +65,20 @@
   "time": {
     "daysAgo": "{{count}} दिन पहले",
     "minutesAgo": "{{count}} मिनट पहले",
+    "hoursAgo": "{{count}} घंटे पहले",
+    "monthsAgo": "{{count}} महीने पहले",
+    "yearsAgo": "{{count}} साल पहले",
     "minutesAgo_plural": "{{count}} मिनट पहले",
-    "hoursAgo": "{{count}} घंटा पहले",
     "hoursAgo_plural": "{{count}} घंटे पहले",
+    "daysAgo_plural": "{{count}} दिन पहले",
+    "monthsAgo_plural": "{{count}} महीने पहले",
+    "yearsAgo_plural": "{{count}} साल पहले",
     "justNow": "अभी",
     "minutesAgo_other": "{{count}} मिनट पहले",
     "hoursAgo_other": "{{count}} घंटे पहले",
-    "daysAgo_other": "{{count}} दिन पहले"
+    "daysAgo_other": "{{count}} दिन पहले",
+    "monthsAgo_other": "{{count}} महीने पहले",
+    "yearsAgo_other": "{{count}} साल पहले"
   },
   "news": {
     "rrVsKcr": "RR बनाम KCR संघर्ष",
@@ -272,7 +288,9 @@
     "passwordResetSuccess": "पासवर्ड सफलतापूर्वक रीसेट! लॉगिन पर रीडायरेक्ट हो रहे हैं...",
     "passwordResetFailed": "पासवर्ड रीसेट करने में विफल। कृपया पुनः प्रयास करें।",
     "resetting": "रीसेट हो रहा है...",
-    "resetPassword": "पासवर्ड रीसेट करें"
+    "resetPassword": "पासवर्ड रीसेट करें",
+    "invalidCredentials": "अमान्य ईमेल/फोन या पासवर्ड",
+    "userNotFound": "उपयोगकर्ता नहीं मिला"
   },
   "politicsNews": {
     "heading": "ताज़ा राजनीतिक समाचार",
@@ -343,7 +361,9 @@
     "title": "समाचार श्रेणियाँ",
     "subtitle": "विभिन्न क्षेत्रों से नवीनतम समाचार और अपडेट प्राप्त करें",
     "loading": "श्रेणियाँ लोड हो रही हैं...",
-    "error": "श्रेणियाँ लोड करने में त्रुटि"
+    "error": "श्रेणियाँ लोड करने में त्रुटि",
+    "selectLanguageFirst": "कृपया पहले भाषा चुनें",
+    "noCategories": "कोई श्रेणी उपलब्ध नहीं"
   },
   "loading": {
     "newsLoading": "समाचार लोड हो रहे हैं..."
@@ -352,7 +372,8 @@
     "newsLoadErrorTitle": "समाचार लोड करने में त्रुटि",
     "noNewsData": "कोई समाचार डेटा उपलब्ध नहीं है",
     "connectionIssue": "सर्वर से कनेक्शन समस्या - कृपया बाद में पुनः प्रयास करें",
-    "newsLoadError": "समाचार लोड करने में समस्या:"
+    "newsLoadError": "समाचार लोड करने में समस्या:",
+    "serverError": "सर्वर त्रुटि। कृपया बाद में पुनः प्रयास करें।"
   },
   "headings": {
     "politicsLatestNews": "नवीनतम राजनीतिक समाचार",
@@ -407,5 +428,37 @@
   "recently": "हाल ही में",
   "SENSEX": "सेंसेक्स",
   "NIFTY": "निफ्टी",
-  "USDINR": "यूएसडी/आईएनआर"
+  "USDINR": "यूएसडी/आईएनआर",
+  "newspaper": {
+    "title": "मरो कुरुक्षेत्रम",
+    "news": "समाचार",
+    "today": "आज",
+    "yesterday": "कल",
+    "edition": "संस्करण",
+    "newspaperEdition": "अखबार संस्करण",
+    "editionWillBeAvailable": "संस्करण जल्द ही उपलब्ध होगा",
+    "pdfFilesNotUploaded": "PDF फाइलें अभी तक अपलोड नहीं की गईं",
+    "selectLanguage": "भाषा चुनें",
+    "loadingEditions": "अखबार संस्करण लोड हो रहे हैं...",
+    "failedToLoad": "अखबार संस्करण लोड करने में विफल",
+    "tryAgain": "पुनः प्रयास करें",
+    "selectDate": "तारीख चुनें",
+    "noPreviewAvailable": "कोई पूर्वावलोकन उपलब्ध नहीं",
+    "pages": "पृष्ठ",
+    "openPdf": "PDF खोलें",
+    "notAvailable": "उपलब्ध नहीं",
+    "download": "डाउनलोड",
+    "tapToViewInApp": "ऐप में देखने के लिए टैप करें",
+    "recentEditions": "हाल के संस्करण",
+    "viewer": "PDF व्यूअर",
+    "loadingPdf": "PDF लोड हो रहा है...",
+    "retryInApp": "ऐप में पुनः प्रयास करें",
+    "openInBrowser": "ब्राउज़र में खोलें"
+  },
+  "epaper": {
+    "noPdfAvailable": "कोई PDF उपलब्ध नहीं",
+    "invalidPdfUrl": "अमान्य PDF URL",
+    "downloadNewspaperQuestion": "क्या आप इस अखबार को डाउनलोड करना चाहते हैं?",
+    "downloadEpaper": "ई-पेपर डाउनलोड करें"
+  }
 }

@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import apiClient from '@/api/apiClient';
+import { formatTimeAgo } from "@/utils/timeUtils";
 
 interface NewsItem {
   id: string;
@@ -135,22 +136,6 @@ const TechAndEntertainmentNews: React.FC = () => {
     }
   };
 
-  // Format "time ago"
-  const formatTimeAgo = (dateString: string) => {
-    const now = Date.now();
-    const createdAt = new Date(dateString).getTime();
-    const diffInHours = Math.floor((now - createdAt) / (1000 * 60 * 60));
-
-    if (diffInHours < 1) {
-      const diffInMinutes = Math.floor((now - createdAt) / (1000 * 60));
-      return t("time.minutesAgo", { count: diffInMinutes });
-    } else if (diffInHours < 24) {
-      return t("time.hoursAgo", { count: diffInHours });
-    } else {
-      const diffInDays = Math.floor(diffInHours / 24);
-      return t("time.daysAgo", { count: diffInDays });
-    }
-  };
 
   // Navigate to details
   const handleCardClick = (newsId: string) => {
@@ -242,7 +227,7 @@ const TechAndEntertainmentNews: React.FC = () => {
                     </span>
                     <span className="flex items-center">
                       <Clock className="h-3 w-3 mr-1 flex-shrink-0" />
-                      {formatTimeAgo(news.createdAt)}
+                      {formatTimeAgo(news.createdAt, { t })}
                     </span>
                   </div>
                 </CardContent>
@@ -303,7 +288,7 @@ const TechAndEntertainmentNews: React.FC = () => {
                     </span>
                     <span className="flex items-center">
                       <Clock className="h-3 w-3 mr-1 flex-shrink-0" />
-                      {formatTimeAgo(news.createdAt)}
+                      {formatTimeAgo(news.createdAt, { t })}
                     </span>
                   </div>
                 </CardContent>
