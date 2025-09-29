@@ -36,11 +36,13 @@ export default defineConfig(({ mode }) => ({
           vendor: ['react', 'react-dom'],
           router: ['react-router-dom'],
           ui: ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu'],
+          i18n: ['i18next', 'react-i18next', 'i18next-browser-languagedetector'],
         },
       },
     },
   },
   define: {
     'process.env': process.env,
+    'import.meta.env.VITE_API_BASE_URL': JSON.stringify(process.env.VITE_API_BASE_URL || 'https://phpstack-1520234-5847937.cloudwaysapps.com/api/v1'),
   },
 }));
