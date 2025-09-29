@@ -21,7 +21,7 @@ This guide addresses the deployment issues that were preventing the application 
 - Ensured proper proxy usage in both development and production
 
 ### 4. Updated Node.js Version
-- Changed Node.js version from 20.x to 18.x for better Vercel compatibility
+- Updated Node.js version to 22.x (Vercel's current requirement)
 - Added `vercel-build` script for Vercel deployment
 
 ## Environment Variables Required
