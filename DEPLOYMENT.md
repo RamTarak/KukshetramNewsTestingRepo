@@ -7,7 +7,7 @@ This guide addresses the deployment issues that were preventing the application 
 ## Key Changes Made
 
 ### 1. Updated `vercel.json`
-- Added proper Node.js runtime configuration for API routes
+- Removed problematic runtime specification (Vercel auto-detects Node.js for .js files)
 - Added environment variable configuration
 - Ensured proper routing for SPA and API routes
 
@@ -20,7 +20,8 @@ This guide addresses the deployment issues that were preventing the application 
 - Updated base URL logic for production deployment
 - Ensured proper proxy usage in both development and production
 
-### 4. Added Build Scripts
+### 4. Updated Node.js Version
+- Changed Node.js version from 20.x to 18.x for better Vercel compatibility
 - Added `vercel-build` script for Vercel deployment
 
 ## Environment Variables Required

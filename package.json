@@ -73,7 +73,7 @@
     "zod": "^3.23.8"
   },
   "engines": {
-    "node": "20.x"
+    "node": "18.x"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
